@@ -1,0 +1,67 @@
+import java.util.Scanner;
+
+public class ValidatePassword {
+
+
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        
+        String userPassword;
+        boolean result;
+        
+        do
+        {
+                    System.out.print("Please enter password:\t");
+                    userPassword = sc.next();  
+                    
+                    result = isValidPassword(userPassword);
+                    
+                    if(result)
+                    {
+                        System.out.println("\nPassword is valid!!!");
+                    }else{
+                        System.out.println("\nSorry, Password invalid!!!");
+                    }
+        }
+        while(! result);
+        
+    }
+    
+    public static boolean isValidPassword(String userPassword)
+    {
+        boolean isValid = false;
+        
+        int countUpperCases = 0, countLowerCases = 0, countDigits = 0;
+        
+        int size = userPassword.length();
+        
+        for(int i = 0; i < size; i++)
+        {
+            char check = userPassword.charAt(i);
+            
+            if(Character.isUpperCase(check))
+            {
+                countUpperCases++;
+            }
+            
+            if(Character.isLowerCase(check))
+            {
+                countLowerCases++;
+            }
+            
+            if(Character.isDigit(check))
+            {
+                countDigits++;
+            }
+        }
+        
+        if(countUpperCases >=2 && countLowerCases >=2 && countDigits >=2)
+        {
+            isValid = true;
+        }
+        
+        return isValid;
+    }
+    
+}
